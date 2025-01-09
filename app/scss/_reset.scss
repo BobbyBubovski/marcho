@@ -34,6 +34,22 @@ dd {
     margin: 0;
 }
 
+ul{
+    list-style: none;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+
+input,
+button,
+textarea,
+select{
+    font-style: inherit;
+}
+
 a {
     text-decoration: none;
 }

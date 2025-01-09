@@ -1,3 +1,16 @@
+@use 'vars';
+
+
+
 body{
-    
+    color: vars.$default;
+    font-size: 16px;
+    line-height: 26px;
+    @extend %quicksand-500;
+}
+
+.conteiner{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
