@@ -120,7 +120,11 @@ function styles() {
 
 // Функция для обработки JavaScript
 function scripts() {
-    return src(['app/js/main.js']) // Указываем исходный JS файл
+    return src([
+        'node_modules/jquery/dist/jquery.js',
+        'node_modules/slick-carousel/slick/slick.js',
+        'app/js/main.js'
+    ]) // Указываем исходный JS файл
         .pipe(newer('app/js/main.min.js')) // Проверяем, изменился ли файл
         .pipe(concat('main.min.js')) // Объединяем в один файл
         .pipe(uglify()) // Минимизируем JavaScript
