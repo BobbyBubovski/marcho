@@ -103,6 +103,7 @@ const clean = require('gulp-clean'); // Удаление папок/файлов
 const postcss = require('gulp-postcss'); // Обработка CSS
 const autoprefixer = require('autoprefixer'); // Добавление вендорных префиксов
 const newer = require('gulp-newer'); // Обработка только изменённых файлов
+// const imagemin = require('gulp-imagemin');
 
 // Функция для обработки стилей
 function styles() {
@@ -123,6 +124,7 @@ function scripts() {
     return src([
         'node_modules/jquery/dist/jquery.js',
         'node_modules/slick-carousel/slick/slick.js',
+        'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js',
         'app/js/main.js'
     ]) // Указываем исходный JS файл
         .pipe(newer('app/js/main.min.js')) // Проверяем, изменился ли файл
@@ -165,6 +167,23 @@ function cleanDist() {
         .pipe(clean()); // Удаляем её содержимое
 }
 
+// function images() {
+//     return src('app/images/**/*.*')
+//         .pipe(imagemin([
+//             imagemin.gifsicle({ interlaced: true }),
+//             imagemin.mozjpeg({ quality: 75, progressive: true }),
+//             imagemin.optipng({ optimizationLevel: 5 }),
+//             imagemin.svgo({
+//                 plugins: [
+//                     { removeViewBox: true },
+//                     { cleanupIDs: false }
+//                 ]
+//             })
+//         ]))
+//         .pipe(dest('dist/images'))
+// }
+
+
 // Функция для сборки проекта в папку dist
 function building() {
     return src([
@@ -178,11 +197,12 @@ function building() {
 // Экспортируем задачи для использования в командной строке
 exports.styles = styles; // Обработка стилей
 exports.scripts = scripts; // Обработка JS
+// exports.images = images;
 exports.browsersync = browsersync; // Запуск локального сервера
 exports.watching = watching; // Наблюдение за файлами
 
 // Сборка проекта
-exports.build = series(cleanDist, building); // Очистка папки и сборка
+exports.build = series(cleanDist,  building); // Очистка папки и сборка
 
 // Задача по умолчанию
 exports.default = parallel(styles, scripts, browsersync, watching); // Параллельное выполнение задач
