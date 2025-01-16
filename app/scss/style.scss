@@ -237,27 +237,27 @@ background-color: vars.$bg;
     display: flex;
     justify-content: center;
     margin-top: -70px;
-        li{
-            padding: 0 5px;
-            button{
-                padding: 0;
-                font-size: 0;
-                background-color: transparent;
+    li{
+        padding: 0 5px;
+        button{
+            padding: 0;
+            font-size: 0;
+            background-color: transparent;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            border: 1px solid transparent;
+            position: relative;
+            &::before{
+                content: '';
+                position: absolute;
+                width: 6px;
+                height: 6px;
                 border-radius: 50%;
-                width: 26px;
-                height: 26px;
-                border: 1px solid transparent;
-                position: relative;
-                &::before{
-                    content: '';
-                    position: absolute;
-                    width: 6px;
-                    height: 6px;
-                    border-radius: 50%;
-                    background-color: vars.$default;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50% );
+                background-color: vars.$default;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50% );
                 }
             }
             &.slick-active{
@@ -399,29 +399,157 @@ background-color: vars.$bg;
 }
 
 .video-fashion{
-background-color: vars.$bg;
-background-image: url('../images/decore/fash-pattern-bg.png');
-background-repeat: no-repeat;
-background-size: cover;
-padding: 125px 0;
-&__inner{
-    display: flex;
-}
-
-&__popup{
-    margin-right: 60px;
-    max-width: 530px;
-    width: 100%;
-    height: 480px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-position: center center;
-    background-size: cover;
+    background-color: vars.$bg;
+    background-image: url('../images/decore/fash-pattern-bg.png');
     background-repeat: no-repeat;
+    background-size: cover;
+    padding: 125px 0;
+    &__inner{
+        display: flex;
+    }
+
+    &__popup{
+        margin-right: 60px;
+        max-width: 530px;
+        width: 100%;
+        height: 480px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    &__content{
+        max-width: 570px;
+    }
 }
 
-&__content{
-max-width: 570px;
+.product{
+    padding: 105px 0 120px;
+    text-align: center;
+    &__items{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 45px 30px;
+    }
+
+    &__link{
+        text-transform: uppercase;
+        color: vars.$title;
+        display: inline-block;
+        border: 1px solid vars.$accent;
+        padding: 14px 27px;
+        margin-top: 55px;
+    }
+
 }
+
+.product-item{
+    max-width: 370px;
+
+    &__img-box{
+        position: relative;
+        height: 370px;
+        overflow: hidden;
+        margin-bottom: 25px;
+    }
+
+    &__link-box{
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 50px;
+        background-color: #fff;
+        width: 220px;
+        height: 50px;
+        margin: 0 auto;
+        box-shadow: 0px 5px 30px 0px rgba(152, 152, 152, 0.2);
+        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        transform: translateY(300%);
+        transition: all .3s;
+    }
+
+    &__link--line::before,
+    &__link--line::after{
+        content: '';
+        position: absolute;
+        background-color: #fff;
+        width: 1px;
+        height: 30px;
+        background-color: #ececec;
+        top: 10px;
+    }
+
+    &__link--line::before{
+        left: 70px;
+    }
+
+    &__link--line::after{
+        right: 70px;
+    }
+
+    &__link{
+        display: inherit;
+        path{
+        transition: all .3s;
+        }
+    }
+
+    &__link:hover{
+        path{
+            fill: vars.$accent;
+        }
+    }
+    
+    &__images{
+        object-fit: cover;
+    }
+
+    &:hover{
+        .product-item__link-box{
+            transform: translateY(0);
+        }
+    }
+
+    &__title{
+        color: vars.$title;
+        padding: 15px 0 20px;
+    }
+
+    &__price{
+        display: flex;
+        justify-content: center;
+        @extend %roboto-400;
+    }
+
+    &__new-price{
+        padding: 0 12px;
+        color: vars.$title;
+    }
+
+    &__old-price{
+        padding: 0 12px;
+        text-decoration: line-through;
+    }
+
+    &--sale{
+        .product-item__img-box::before{
+            content: 'SALE';
+            @extend %btn;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            line-height: 1;
+            padding: 5px 11px;
+        }
+    }
+}
+
+.star{
+    margin: 0 auto;
 }

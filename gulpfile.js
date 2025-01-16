@@ -125,6 +125,7 @@ function scripts() {
         'node_modules/jquery/dist/jquery.js',
         'node_modules/slick-carousel/slick/slick.js',
         'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js',
+        'node_modules/@rateyo/jquery/lib/iife/jquery.rateyo.js',
         'app/js/main.js'
     ]) // Указываем исходный JS файл
         .pipe(newer('app/js/main.min.js')) // Проверяем, изменился ли файл
