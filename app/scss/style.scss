@@ -795,4 +795,8 @@ background-color: vars.$bg;
         color: vars.$accent;
         display: inline-block;
     }
+
+    &__text{
+        margin-bottom: 25px;
+    }
 }
