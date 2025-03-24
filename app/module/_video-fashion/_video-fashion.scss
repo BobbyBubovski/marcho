@@ -1,0 +1,34 @@
+@use 'media';
+@use 'vars';
+@use 'fonts';
+@use 'reset';
+@use 'libs';
+@use 'global';
+
+.video-fashion{
+    background-color: vars.$bg;
+    background-image: url('../images/decore/fash-pattern-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 125px 0;
+    &__inner{
+        display: flex;
+    }
+
+    &__popup{
+        margin-right: 60px;
+        max-width: 530px;
+        width: 100%;
+        height: 480px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    &__content{
+        max-width: 570px;
+    }
+}

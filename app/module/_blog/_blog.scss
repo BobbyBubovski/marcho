@@ -1,0 +1,113 @@
+@use 'media';
+@use 'vars';
+@use 'fonts';
+@use 'reset';
+@use 'libs';
+@use 'global';
+
+.blog{
+    padding: 50px 0 160px;
+    background-image: url("../images/decore/blog_bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+
+    &__items{
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        &::after{
+            content: '';
+            position: absolute;
+            right: -25px;
+            top: -34px;
+            z-index: 1;
+            width: 129px;
+            height: 56px;
+            background-image: url('../images/decore/blog_sqr_bg.png');
+            
+        }
+
+    }
+
+    &__item{
+        max-width: 370px;
+        border: 1px solid #ececec;
+        transition: all .3s;
+        z-index: 2;
+        &:hover{
+            box-shadow: 20px 0px 60px 0px rgba(202, 202, 202, 0.35);
+            border: none;
+            .blog__item-link{
+                color: vars.$accent;
+                &::after{
+                    background-image: url('../images/icons/accent-arrow.svg');
+                }
+            }
+        }
+    }
+
+    &__item-imglink{
+        display: block ;
+        img{
+            height: 288px;
+            object-fit: cover;
+        }
+    }
+
+    &__item-box{
+        padding: 30px 40px;
+    }
+
+    &__item-title{
+        color: vars.$title;
+        @extend %roboto-400;
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    &__item-link{
+        position: relative;
+        transition: all .3s;
+    }
+
+    &__item-link::after{
+        content: '';
+        background-image: url('../images/icons/arrow-right.svg');
+        width: 14px;
+        height: 11px;
+        position: absolute;
+        top: 4px;
+        right: -14px;
+    }
+
+}
+
+.blog-box{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    &__author,
+    &__date{
+        padding-left: 30px;
+        position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 0;
+            top: 4px;
+        }
+    }
+    
+    &__author::before{
+        background-image: url('../images/icons/user_greyy.svg');
+        
+    }
+
+    &__date::before{
+        background-image: url('../images/icons/clock.svg');
+    }
+}
