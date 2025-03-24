@@ -1,0 +1,16 @@
+@use 'media';
+@use 'vars';
+@use 'fonts';
+@use 'reset';
+@use 'libs';
+@use 'global';
+@use '../module/_header/header';
+@use '../module/_footer/footer';
+@use '../module/_top-slider/top-slider';
+@use '../module/_categories-info/categories-info';
+@use '../module/_video-fashion/video-fashion';
+@use '../module/_product/product';
+@use '../module/_promo/promo';
+@use '../module/_partners/partners';
+@use '../module/_blog/blog';
+
