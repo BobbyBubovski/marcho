@@ -148,3 +148,18 @@ margin: 0 auto 55px;
         }
     }
 }
+
+
+@media (max-width: 620px){
+    .title{
+        font-size: 40px;
+        line-height: 48px;
+    }
+}
+
+@media (max-width: 375px){
+    .title{
+        font-size: 32px;
+        line-height: 40px;
+    }
+}
