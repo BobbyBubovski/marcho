@@ -104,7 +104,7 @@ const nunjucksRender = require("gulp-nunjucks-render");
 // Функция для обработки стилей
 function styles() {
   return (
-    src("app/scss/*.scss") // Указываем исходный SCSS файл
+    src("app/scss/*.scss", "app/module/**/*.scss") // Указываем исходный SCSS файл
       //.pipe(concat()) // Объединяем в один файл
       .pipe(
         rename({
@@ -153,7 +153,11 @@ function scripts() {
 
 // Функция для наблюдения за изменениями файлов
 function watching() {
-  watch(["app/**/*.scss"], { usePolling: true }, styles).on("change", () => {
+  watch(
+    ["app/**/*.scss", "app/module/**/*.scss"],
+    { usePolling: true },
+    styles
+  ).on("change", () => {
     console.log("SCSS файл изменён");
   }); // Следим за SCSS файлами
   watch(
@@ -189,22 +193,13 @@ function cleanDist() {
     .pipe(clean()); // Удаляем её содержимое
 }
 
-// function images() {
-//     return src('app/images/**/*.*')
-//         .pipe(imagemin([
-//             imagemin.gifsicle({ interlaced: true }),
-//             imagemin.mozjpeg({ quality: 75, progressive: true }),
-//             imagemin.optipng({ optimizationLevel: 5 }),
-//             imagemin.svgo({
-//                 plugins: [
-//                     { removeViewBox: true },
-//                     { cleanupIDs: false }
-//                 ]
-//             })
-//         ]))
-//         .pipe(dest('dist/images'))
-// }
+async function images() {
+  const imagemin = (await import("gulp-imagemin")).default; // Загружаем gulp-imagemin через import()
 
+  return src("app/images/**/*.*") // Берем все изображения
+    .pipe(imagemin()) // Сжимаем изображения
+    .pipe(dest("dist/images")); // Сохраняем в папку dist/images
+}
 // Функция для сборки проекта в папку dist
 function building() {
   return src(
